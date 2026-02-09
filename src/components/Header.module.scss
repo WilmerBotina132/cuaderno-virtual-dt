@@ -1,0 +1,79 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.header {
+    background-color: white;
+    box-shadow: $shadow-sm;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid $border-color;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+    @include flex(row, space-between, center);
+    height: 70px;
+}
+
+.logo {
+    h1 {
+        font-size: $font-size-xl;
+        color: $primary-color;
+        margin: 0;
+        font-family: $font-family-heading;
+        @include transition(color);
+
+        &:hover {
+            color: $secondary-color;
+        }
+    }
+}
+
+.nav {
+    @include flex(row, flex-end, center);
+    gap: $spacing-xl;
+}
+
+.navLink {
+    color: $text-secondary;
+    font-weight: 500;
+    font-size: $font-size-base;
+    position: relative;
+    @include transition(color);
+
+    &:hover {
+        color: $primary-color;
+    }
+
+    // Efecto de subrayado animado
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: $primary-color;
+        transition: width $transition-base;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
+}
+
+// Responsive
+@include respond-to('md') {
+    .container {
+        padding: 0 $spacing-xl;
+    }
+}
+
+/* TODO para estudiantes:
+ * 1. Agregar un menú hamburguesa para móviles
+ * 2. Implementar un indicador de página activa
+ * 3. Agregar animación de entrada al hacer scroll
+ */

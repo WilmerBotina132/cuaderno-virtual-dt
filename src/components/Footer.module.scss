@@ -1,0 +1,83 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.footer {
+    background-color: $text-primary;
+    color: white;
+    margin-top: auto;
+    padding: $spacing-3xl 0 $spacing-lg;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+}
+
+.content {
+    @include grid(1, $spacing-xl);
+    margin-bottom: $spacing-xl;
+
+    @include respond-to('md') {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.section {
+    h3 {
+        color: white;
+        font-size: $font-size-xl;
+        margin-bottom: $spacing-md;
+    }
+
+    h4 {
+        color: $accent-color;
+        font-size: $font-size-lg;
+        margin-bottom: $spacing-sm;
+    }
+
+    p {
+        color: $text-light;
+        line-height: 1.6;
+    }
+}
+
+.links {
+    @include flex(column, flex-start, flex-start);
+    gap: $spacing-sm;
+
+    a {
+        color: $text-light;
+        @include transition(color);
+
+        &:hover {
+            color: $accent-color;
+        }
+    }
+}
+
+.social {
+    @include flex(row, flex-start, center);
+    gap: $spacing-md;
+
+    a {
+        color: $text-light;
+        @include transition(color, transform);
+
+        &:hover {
+            color: $accent-color;
+            transform: translateY(-2px);
+        }
+    }
+}
+
+.bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: $spacing-lg;
+    text-align: center;
+
+    p {
+        color: $text-light;
+        font-size: $font-size-sm;
+    }
+}

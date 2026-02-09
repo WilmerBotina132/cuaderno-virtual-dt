@@ -1,0 +1,82 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+@import '../styles/typography';
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: $background-light;
+    min-height: 100vh;
+}
+
+/* Utilidades globales */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-lg;
+}
+
+.section {
+    padding: $spacing-3xl 0;
+}
+
+/* Botones base */
+.btn {
+    display: inline-block;
+    padding: $spacing-sm $spacing-lg;
+    border-radius: $radius-md;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    @include transition(background-color, transform);
+
+    &:hover {
+        transform: translateY(-1px);
+    }
+}
+
+.btn-primary {
+    background-color: $primary-color;
+    color: white;
+
+    &:hover {
+        background-color: darken($primary-color, 10%);
+    }
+}
+
+.btn-secondary {
+    background-color: $secondary-color;
+    color: white;
+
+    &:hover {
+        background-color: darken($secondary-color, 10%);
+    }
+}
+
+/* Cards base */
+.card {
+    background-color: white;
+    border-radius: $radius-lg;
+    padding: $spacing-lg;
+    box-shadow: $shadow-sm;
+    @include transition(box-shadow);
+
+    &:hover {
+        box-shadow: $shadow-md;
+    }
+}
+
+/* TODO para estudiantes: 
+ * 1. Agregar estilos para tema oscuro usando CSS variables
+ * 2. Agregar más clases de utilidad (text-center, mt-*, mb-*, etc.)
+ * 3. Mejorar los estilos de los botones con más variantes
+ */

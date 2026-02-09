@@ -1,0 +1,84 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.home {
+    min-height: 100vh;
+}
+
+.hero {
+    background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+    color: white;
+    padding: $spacing-3xl 0;
+    text-align: center;
+
+    @include respond-to('md') {
+        padding: 6rem 0;
+    }
+}
+
+.heroTitle {
+    font-size: $font-size-3xl;
+    margin-bottom: $spacing-lg;
+    color: white;
+
+    @include respond-to('md') {
+        font-size: 3rem;
+    }
+}
+
+.heroSubtitle {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-xl;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.heroButtons {
+    @include flex(row, center, center);
+    gap: $spacing-md;
+    flex-wrap: wrap;
+}
+
+.sectionTitle {
+    text-align: center;
+    margin-bottom: $spacing-2xl;
+    color: $text-primary;
+}
+
+.postsGrid {
+    @include grid(1, $spacing-xl);
+    margin-bottom: $spacing-2xl;
+
+    @include respond-to('md') {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to('lg') {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.viewAll {
+    text-align: center;
+}
+
+.aboutPreview {
+    background-color: $background-gray;
+}
+
+.aboutContent {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+
+    h2 {
+        margin-bottom: $spacing-lg;
+    }
+
+    p {
+        font-size: $font-size-lg;
+        margin-bottom: $spacing-xl;
+    }
+}
