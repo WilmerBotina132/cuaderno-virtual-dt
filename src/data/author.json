@@ -1,12 +1,12 @@
 {
-    "name": "Tu Nombre",
+    "name": "Leonardo Chapal",
     "role": "Desarrollador Full Stack",
     "bio": "Apasionado por crear experiencias web increíbles con Next.js y React. Me encanta compartir conocimiento y ayudar a otros desarrolladores a crecer.",
-    "email": "tu.email@ejemplo.com",
-    "location": "Tu Ciudad, País",
+    "email": "leonardochapal@gmail.com",
+    "location": "Pasto, Colombia",
     "avatar": "/images/avatar.jpg",
     "social": {
-        "github": "https://github.com/tuusuario",
+        "github": "https://github.com/LeonardoChapal",
         "linkedin": "https://linkedin.com/in/tuusuario",
         "twitter": "https://twitter.com/tuusuario"
     },

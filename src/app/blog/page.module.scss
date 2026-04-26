@@ -1,36 +1,81 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
-
 .blogPage {
-    min-height: 100vh;
-    padding: $spacing-3xl 0;
+    padding: 2rem 0 4rem;
 }
 
 .header {
-    text-align: center;
-    margin-bottom: $spacing-3xl;
+    margin-bottom: 2rem;
 
     h1 {
-        font-size: $font-size-4xl;
-        margin-bottom: $spacing-md;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
     }
 
     p {
-        font-size: $font-size-lg;
-        color: $text-secondary;
+        color: #6b7280;
+    }
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.filterBtn {
+    padding: 0.4rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 999px;
+    background: white;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+        border-color: #3b82f6;
+        color: #3b82f6;
+    }
+
+    &.active {
+        background-color: #3b82f6;
+        border-color: #3b82f6;
+        color: white;
     }
 }
 
 .postsGrid {
-    @include grid(1, $spacing-xl);
-
-    @include respond-to('md') {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @include respond-to('lg') {
-        grid-template-columns: repeat(3, 1fr);
-    }
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
 }
 
-/* TODO para estudiantes: Agregar estilos para filtros y paginación */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.pageBtn {
+    padding: 0.5rem 1.25rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+
+    &:hover:not(:disabled) {
+        border-color: #3b82f6;
+        color: #3b82f6;
+    }
+
+    &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+}

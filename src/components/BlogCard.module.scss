@@ -4,15 +4,45 @@
 .card {
     background-color: white;
     border-radius: $radius-lg;
-    padding: $spacing-lg;
     box-shadow: $shadow-sm;
-    @include transition(transform, box-shadow);
     border: 1px solid $border-color;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     &:hover {
-        transform: translateY(-4px);
+        transform: translateY(-6px);
         box-shadow: $shadow-lg;
+
+        .image {
+            transform: scale(1.05);
+        }
+
+        .readMore {
+            letter-spacing: 0.02em;
+        }
     }
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background-color: #f3f4f6;
+}
+
+.image {
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.body {
+    padding: $spacing-lg;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .header {
@@ -53,17 +83,46 @@
 .excerpt {
     color: $text-secondary;
     line-height: 1.6;
-    margin-bottom: $spacing-lg;
+    margin-bottom: $spacing-md;
+    flex: 1;
     @include line-clamp(3);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: $spacing-md;
+}
+
+.tag {
+    background-color: #f3f4f6;
+    color: $text-secondary;
+    font-size: $font-size-xs;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-weight: 500;
 }
 
 .footer {
     @include flex(row, space-between, center);
     padding-top: $spacing-md;
     border-top: 1px solid $border-color;
+    margin-top: auto;
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
 }
 
 .date {
+    color: $text-light;
+    font-size: $font-size-sm;
+}
+
+.author {
     color: $text-light;
     font-size: $font-size-sm;
 }
@@ -72,17 +131,10 @@
     color: $primary-color;
     font-weight: 600;
     font-size: $font-size-sm;
-    @include transition(color, transform);
+    transition: color 0.2s ease, letter-spacing 0.2s ease, transform 0.2s ease;
 
     &:hover {
         color: $secondary-color;
         transform: translateX(4px);
     }
 }
-
-/* TODO para estudiantes:
- * 1. Agregar estilos para la imagen del post
- * 2. Mejorar la animación con keyframes
- * 3. Agregar estilos para tags
- * 4. Crear variantes de card (featured, compact, etc.)
- */

@@ -1,0 +1,101 @@
+.contactPage {
+    padding: 3rem 0 4rem;
+}
+
+.header {
+    margin-bottom: 2rem;
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        color: #6b7280;
+    }
+}
+
+.formWrapper {
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    label {
+        font-weight: 500;
+        font-size: 0.95rem;
+    }
+}
+
+.input,
+.textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+
+    &:focus {
+        border-color: #3b82f6;
+    }
+}
+
+.inputError {
+    border-color: #dc2626;
+}
+
+.textarea {
+    resize: vertical;
+}
+
+.error {
+    color: #dc2626;
+    font-size: 0.8rem;
+}
+
+.button {
+    align-self: flex-start;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.7rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: #2563eb;
+    }
+}
+
+.success {
+    text-align: center;
+    padding: 4rem 2rem;
+
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    p {
+        color: #6b7280;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.successIcon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}

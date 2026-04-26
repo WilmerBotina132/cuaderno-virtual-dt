@@ -8,6 +8,11 @@
     top: 0;
     z-index: 100;
     border-bottom: 1px solid $border-color;
+    transition: box-shadow 0.3s ease;
+}
+
+.scrolled {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .container {
@@ -16,6 +21,7 @@
     padding: 0 $spacing-lg;
     @include flex(row, space-between, center);
     height: 70px;
+    position: relative;
 }
 
 .logo {
@@ -48,7 +54,6 @@
         color: $primary-color;
     }
 
-    // Efecto de subrayado animado
     &::after {
         content: '';
         position: absolute;
@@ -65,15 +70,77 @@
     }
 }
 
-// Responsive
+.active {
+    color: $primary-color;
+
+    &::after {
+        width: 100%;
+    }
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    z-index: 200;
+
+    span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background-color: $text-secondary;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+        transform-origin: center;
+    }
+}
+
+.hamburgerOpen {
+    span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+        opacity: 0;
+    }
+
+    span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: white;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem $spacing-lg;
+        gap: $spacing-md;
+        border-bottom: 1px solid $border-color;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .navOpen {
+        display: flex;
+    }
+}
+
 @include respond-to('md') {
     .container {
         padding: 0 $spacing-xl;
     }
 }
-
-/* TODO para estudiantes:
- * 1. Agregar un menú hamburguesa para móviles
- * 2. Implementar un indicador de página activa
- * 3. Agregar animación de entrada al hacer scroll
- */

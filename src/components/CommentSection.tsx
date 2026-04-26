@@ -1,40 +1,7 @@
 'use client';
 
-// import { useState } from 'react';
-// import styles from './CommentSection.module.scss';
-
-/* 
- * EJERCICIO: Implementar sección de comentarios con React Hooks
- * 
- * CONCEPTOS A APRENDER:
- * - 'use client': Directiva para Client Components
- * - useState: Hook para manejar estado local
- * - Manejo de formularios en React
- * - Renderizado condicional
- * 
- * PASOS A SEGUIR:
- * 
- * 1. Crear el estado para los comentarios
- *    - Usar useState con un array de comentarios
- *    - Cada comentario debe tener: id, author, text, date
- * 
- * 2. Crear el estado para el formulario
- *    - Estado para el nombre del autor
- *    - Estado para el texto del comentario
- * 
- * 3. Implementar función para agregar comentario
- *    - Validar que los campos no estén vacíos
- *    - Crear nuevo comentario con ID único
- *    - Agregar al array de comentarios
- *    - Limpiar el formulario
- * 
- * 4. Crear el JSX:
- *    - Formulario para agregar comentario
- *    - Lista de comentarios existentes
- *    - Mensaje si no hay comentarios
- * 
- * 5. Crear estilos en CommentSection.module.scss
- */
+import { useState } from 'react';
+import styles from './CommentSection.module.scss';
 
 interface Comment {
     id: number;
@@ -44,82 +11,70 @@ interface Comment {
 }
 
 export default function CommentSection() {
-    // TODO: Implementar useState para comentarios
-    // const [comments, setComments] = useState<Comment[]>([]);
+    const [comments, setComments] = useState<Comment[]>([]);
+    const [author, setAuthor] = useState('');
+    const [text, setText] = useState('');
+    const [error, setError] = useState('');
 
-    // TODO: Implementar useState para el formulario
-    // const [author, setAuthor] = useState('');
-    // const [text, setText] = useState('');
+    const handleSubmit = () => {
+        if (!author.trim() || !text.trim()) {
+            setError('Por favor completa todos los campos.');
+            return;
+        }
 
-    // TODO: Implementar función handleSubmit
-    // const handleSubmit = (e: React.FormEvent) => {
-    //   e.preventDefault();
-    //   // Validar campos
-    //   // Crear nuevo comentario
-    //   // Agregar a la lista
-    //   // Limpiar formulario
-    // };
+        const newComment: Comment = {
+            id: Date.now(),
+            author: author.trim(),
+            text: text.trim(),
+            date: new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }),
+        };
+
+        setComments([...comments, newComment]);
+        setAuthor('');
+        setText('');
+        setError('');
+    };
 
     return (
-        <div>
-            <h3>Comentarios</h3>
-            <p>TODO: Implementar sección de comentarios</p>
+        <section className={styles.section}>
+            <h2 className={styles.title}>Comentarios ({comments.length})</h2>
 
-            {/* TODO: Agregar formulario */}
-            {/* 
-      <form onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          placeholder="Tu nombre"
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
-        />
-        <textarea 
-          placeholder="Tu comentario"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <button type="submit">Agregar comentario</button>
-      </form>
-      */}
-
-            {/* TODO: Mostrar lista de comentarios */}
-            {/* 
-      <div>
-        {comments.length === 0 ? (
-          <p>No hay comentarios aún. ¡Sé el primero en comentar!</p>
-        ) : (
-          comments.map(comment => (
-            <div key={comment.id}>
-              <strong>{comment.author}</strong>
-              <p>{comment.text}</p>
-              <small>{comment.date}</small>
+            <div className={styles.form}>
+                <input
+                    className={styles.input}
+                    type="text"
+                    placeholder="Tu nombre"
+                    value={author}
+                    onChange={(e) => setAuthor(e.target.value)}
+                />
+                <textarea
+                    className={styles.textarea}
+                    placeholder="Escribe tu comentario..."
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    rows={4}
+                />
+                {error && <p className={styles.error}>{error}</p>}
+                <button className={styles.button} onClick={handleSubmit}>
+                    Publicar comentario
+                </button>
             </div>
-          ))
-        )}
-      </div>
-      */}
-        </div>
+
+            <div className={styles.list}>
+                {comments.length === 0 ? (
+                    <p className={styles.empty}>Sé el primero en comentar.</p>
+                ) : (
+                    comments.map((comment) => (
+                        <div key={comment.id} className={styles.comment}>
+                            <div className={styles.commentHeader}>
+                                <strong>{comment.author}</strong>
+                                <time>{comment.date}</time>
+                            </div>
+                            <p>{comment.text}</p>
+                        </div>
+                    ))
+                )}
+            </div>
+        </section>
     );
 }
-
-/* PREGUNTAS PARA REFLEXIONAR:
- * 
- * 1. ¿Por qué necesitamos 'use client' en este archivo?
- *    Respuesta: Porque estamos usando useState, que es un hook de React
- *    que solo funciona en Client Components.
- * 
- * 2. ¿Qué pasa con los comentarios si refrescas la página?
- *    Respuesta: Se pierden, porque solo están en el estado local.
- *    Para persistirlos, necesitarías localStorage o una base de datos.
- * 
- * 3. ¿Cómo generas IDs únicos para los comentarios?
- *    Respuesta: Puedes usar Date.now(), o comments.length + 1, o una librería
- *    como uuid. Para este ejercicio, cualquier método simple funciona.
- */
-
-/* BONUS: Persistir comentarios en localStorage
- * - Usar useEffect para cargar comentarios al montar
- * - Guardar en localStorage cada vez que cambian los comentarios
- * - Investigar el hook useLocalStorage (otro ejercicio)
- */

@@ -1,84 +1,82 @@
-@import '../styles/variables';
-@import '../styles/mixins';
-
-.home {
-    min-height: 100vh;
-}
-
 .hero {
-    background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
-    color: white;
-    padding: $spacing-3xl 0;
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
     text-align: center;
-
-    @include respond-to('md') {
-        padding: 6rem 0;
-    }
 }
 
 .heroTitle {
-    font-size: $font-size-3xl;
-    margin-bottom: $spacing-lg;
-    color: white;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #111827;
 
-    @include respond-to('md') {
-        font-size: 3rem;
+    span {
+        color: #3b82f6;
     }
 }
 
 .heroSubtitle {
-    font-size: $font-size-lg;
-    margin-bottom: $spacing-xl;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    color: #6b7280;
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
 }
 
-.heroButtons {
-    @include flex(row, center, center);
-    gap: $spacing-md;
+.heroActions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
+.btnPrimary {
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: #2563eb;
+        color: white;
+    }
+}
+
+.btnSecondary {
+    background-color: white;
+    color: #3b82f6;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 2px solid #3b82f6;
+    transition: all 0.2s;
+
+    &:hover {
+        background-color: #3b82f6;
+        color: white;
+    }
+}
+
+.recentPosts {
+    padding: 4rem 0;
+}
+
 .sectionTitle {
-    text-align: center;
-    margin-bottom: $spacing-2xl;
-    color: $text-primary;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #111827;
 }
 
 .postsGrid {
-    @include grid(1, $spacing-xl);
-    margin-bottom: $spacing-2xl;
-
-    @include respond-to('md') {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @include respond-to('lg') {
-        grid-template-columns: repeat(3, 1fr);
-    }
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
 }
 
 .viewAll {
     text-align: center;
-}
-
-.aboutPreview {
-    background-color: $background-gray;
-}
-
-.aboutContent {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
-
-    h2 {
-        margin-bottom: $spacing-lg;
-    }
-
-    p {
-        font-size: $font-size-lg;
-        margin-bottom: $spacing-xl;
-    }
 }

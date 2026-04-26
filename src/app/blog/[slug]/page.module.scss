@@ -1,0 +1,54 @@
+.postPage {
+    padding: 2rem 0 4rem;
+}
+
+.back {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: #6b7280;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+
+    &:hover {
+        color: #3b82f6;
+    }
+}
+
+.header {
+    margin-bottom: 2.5rem;
+    max-width: 720px;
+}
+
+.category {
+    display: inline-block;
+    background-color: #e0f2fe;
+    color: #0369a1;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.meta {
+    display: flex;
+    gap: 0.5rem;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.content {
+    max-width: 720px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #374151;
+}
