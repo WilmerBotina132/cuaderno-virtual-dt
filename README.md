@@ -74,7 +74,7 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
 ## 👤 Autor
 
-**Wilmer Leonardo Chapal**  
+**Wilmer Andrey Botina Ortiz**  
 Estudiante de la especialidad de Dibujo Técnico
 
 - 🐙 [GitHub](https://github.com/WilmerBotina132)
