@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.scss";
+import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mi Blog Personal | Next.js",
-  description: "Blog personal educativo sobre Next.js, React y desarrollo web moderno",
+  title: "Cuaderno Virtual | Dibujo Técnico",
+  description: "Apuntes, planchas, ejercicios e investigaciones de la especialidad de Dibujo Técnico — ITSIM, Pasto.",
 };
 
 export default function RootLayout({

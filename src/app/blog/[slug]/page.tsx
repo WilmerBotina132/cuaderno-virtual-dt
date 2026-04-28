@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import postsData from '@/data/posts.json';
-import CommentSection from '@/components/CommentSection';
 import styles from './page.module.scss';
 
 export async function generateStaticParams() {
@@ -21,7 +20,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <div className={styles.postPage}>
             <div className="container">
                 <Link href="/blog" className={styles.back}>
-                    ← Volver al blog
+                    ← Volver a apuntes
                 </Link>
 
                 <header className={styles.header}>
@@ -39,8 +38,6 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                 <article className={styles.content}>
                     <p>{post.content}</p>
                 </article>
-
-                <CommentSection />
             </div>
         </div>
     );

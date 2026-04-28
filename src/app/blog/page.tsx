@@ -26,8 +26,8 @@ export default function BlogPage() {
         <div className={styles.blogPage}>
             <div className="container">
                 <header className={styles.header}>
-                    <h1>Blog</h1>
-                    <p>Artículos sobre desarrollo web, Next.js, React y más</p>
+                    <h1>Apuntes</h1>
+                    <p>Fundamentación Tecnológica · Diseño Aplicado</p>
                 </header>
 
                 <div className={styles.filters}>

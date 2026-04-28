@@ -7,9 +7,8 @@ import styles from './Header.module.scss';
 
 const links = [
     { href: '/', label: 'Inicio' },
-    { href: '/blog', label: 'Blog' },
+    { href: '/blog', label: 'Apuntes' },
     { href: '/about', label: 'Sobre Mí' },
-    { href: '/contact', label: 'Contacto' },
 ];
 
 export default function Header() {
@@ -31,7 +30,7 @@ export default function Header() {
         <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
             <div className={styles.container}>
                 <Link href="/" className={styles.logo}>
-                    <h1>Mi Blog Personal</h1>
+                    <h1>Cuaderno Virtual</h1>
                 </Link>
 
                 <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}>

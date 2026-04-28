@@ -9,38 +9,34 @@ export default function Footer() {
             <div className={styles.container}>
                 <div className={styles.content}>
                     <div className={styles.section}>
-                        <h3>Mi Blog Personal</h3>
-                        <p>Compartiendo conocimiento sobre desarrollo web y tecnología.</p>
+                        <h3>Cuaderno Virtual</h3>
+                        <p>Apuntes, planchas e investigaciones de la especialidad de Dibujo Técnico — ITSIM, Pasto.</p>
                     </div>
 
                     <div className={styles.section}>
                         <h4>Enlaces</h4>
                         <nav className={styles.links}>
                             <Link href="/">Inicio</Link>
-                            <Link href="/blog">Blog</Link>
+                            <Link href="/blog">Apuntes</Link>
                             <Link href="/about">Sobre Mí</Link>
-                            <Link href="/contact">Contacto</Link>
                         </nav>
                     </div>
 
                     <div className={styles.section}>
-                        <h4>Redes Sociales</h4>
+                        <h4>Contacto</h4>
                         <div className={styles.social}>
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/WilmerBotina132" target="_blank" rel="noopener noreferrer">
                                 GitHub
                             </a>
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                                LinkedIn
-                            </a>
-                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                                Twitter
+                            <a href="https://wa.me/57XXXXXXXXXX" target="_blank" rel="noopener noreferrer">
+                                WhatsApp
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <div className={styles.bottom}>
-                    <p>&copy; {currentYear} Mi Blog Personal. Todos los derechos reservados.</p>
+                    <p>&copy; {currentYear} Wilmer Andrey Botina Ortiz. Todos los derechos reservados.</p>
                 </div>
             </div>
         </footer>

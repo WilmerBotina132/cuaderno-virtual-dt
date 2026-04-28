@@ -14,7 +14,7 @@ export default function HomePage() {
                     <h1 className={styles.heroTitle}>Hola, soy <span>{authorData.name}</span></h1>
                     <p className={styles.heroSubtitle}>{authorData.bio}</p>
                     <div className={styles.heroActions}>
-                        <Link href="/blog" className={styles.btnPrimary}>Ver el blog</Link>
+                        <Link href="/blog" className={styles.btnPrimary}>Ver apuntes</Link>
                         <Link href="/about" className={styles.btnSecondary}>Sobre mí</Link>
                     </div>
                 </div>
@@ -22,7 +22,7 @@ export default function HomePage() {
 
             <section className={styles.recentPosts}>
                 <div className="container">
-                    <h2 className={styles.sectionTitle}>Artículos Recientes</h2>
+                    <h2 className={styles.sectionTitle}>Apuntes Recientes</h2>
                     <div className={styles.postsGrid}>
                         {recentPosts.map((post) => (
                             <BlogCard
@@ -38,7 +38,7 @@ export default function HomePage() {
                         ))}
                     </div>
                     <div className={styles.viewAll}>
-                        <Link href="/blog" className={styles.btnPrimary}>Ver todos los artículos</Link>
+                        <Link href="/blog" className={styles.btnPrimary}>Ver todos los apuntes</Link>
                     </div>
                 </div>
             </section>
