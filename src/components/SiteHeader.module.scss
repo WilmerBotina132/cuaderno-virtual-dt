@@ -1,0 +1,157 @@
+/* El encabezado es una tira del cajetin: celdas separadas por lineas de 1px. */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: color-mix(in srgb, var(--lamina) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--trazo);
+}
+
+.bar {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  max-width: var(--ancho-maximo);
+  margin-inline: auto;
+  padding-inline: var(--margen-lateral);
+}
+
+.mark {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1px;
+  padding: var(--paso-3) var(--paso-5) var(--paso-3) 0;
+  margin-right: auto;
+}
+
+.markName {
+  font-family: var(--fuente-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+
+.markSub {
+  font-family: var(--fuente-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--grafito-claro);
+}
+
+.nav {
+  display: none;
+
+  @media (min-width: 60rem) {
+    display: flex;
+    align-items: stretch;
+  }
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  padding: var(--paso-4) var(--paso-5);
+  border-left: 1px solid var(--trazo);
+  border-top: 2px solid transparent;
+  font-family: var(--fuente-display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--grafito);
+  transition:
+    color var(--transicion),
+    background-color var(--transicion),
+    border-color var(--transicion);
+
+  &:hover {
+    color: var(--tinta);
+    background: var(--acento-suave);
+  }
+
+  &:last-child {
+    border-right: 1px solid var(--trazo);
+  }
+}
+
+/* La seccion activa se marca arriba con su propio color, como una pestana
+   de archivador. */
+.active {
+  color: var(--tinta);
+  border-top-color: var(--acento);
+  background: var(--acento-suave);
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--paso-2);
+  padding: var(--paso-3) 0 var(--paso-3) var(--paso-4);
+  border: 0;
+  border-left: 1px solid var(--trazo);
+  padding-left: var(--paso-4);
+  background: none;
+  cursor: pointer;
+
+  @media (min-width: 60rem) {
+    display: none;
+  }
+}
+
+.toggleLabel {
+  font-family: var(--fuente-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--grafito);
+}
+
+.toggleIcon {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 20px;
+
+  span {
+    height: 1.5px;
+    background: var(--tinta);
+  }
+}
+
+/* Menu desplegado en pantallas pequenas. Solo existe por debajo del punto
+   en el que la navegacion cabe en una linea. */
+@media (max-width: 59.99rem) {
+  .navOpen {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--lamina);
+    border-bottom: 1px solid var(--trazo);
+    box-shadow: var(--sombra-alta);
+
+    .navLink {
+      border-left: 3px solid transparent;
+      border-top: 0;
+      border-bottom: 1px solid var(--trazo);
+      padding-inline: var(--margen-lateral);
+
+      &:last-child {
+        border-right: 0;
+        border-bottom: 0;
+      }
+    }
+
+    .active {
+      border-left-color: var(--acento);
+    }
+  }
+}

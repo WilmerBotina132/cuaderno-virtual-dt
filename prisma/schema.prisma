@@ -1,0 +1,110 @@
+// Esquema de la base de datos del Cuaderno Virtual.
+// Motor: PostgreSQL (Neon). ORM: Prisma.
+//
+// DATABASE_URL  -> cadena de conexion "pooled" de Neon (la que termina en -pooler),
+//                  es la que usa la app en produccion sobre Vercel.
+// DIRECT_URL    -> cadena de conexion directa (sin pooler), la usan las migraciones.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+/// Las dos grandes secciones publicas del cuaderno.
+enum Section {
+  DISENO_APLICADO
+  FUNDAMENTACION_TECNOLOGICA
+}
+
+/// Subsecciones que existen dentro de cada seccion.
+enum Subsection {
+  VIDEOS
+  CONSULTAS
+  PLANOS
+}
+
+/// Tipo de contenido que puede adjuntarse a una publicacion.
+enum MediaKind {
+  /// Video subido desde el computador y guardado en Vercel Blob.
+  VIDEO_UPLOAD
+  /// Video incrustado de YouTube a partir de su enlace.
+  YOUTUBE
+  /// Imagen subida y guardada en Vercel Blob.
+  IMAGE
+  /// Enlace externo (drive, articulo, pdf, etc).
+  LINK
+}
+
+/// Cuenta de administrador. No hay registro publico: el unico usuario
+/// se crea con `npm run db:seed` a partir de las variables de entorno.
+model User {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String
+  name         String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  posts Post[]
+
+  @@map("users")
+}
+
+/// Publicacion que se muestra en alguna subseccion del sitio publico.
+model Post {
+  id          String     @id @default(cuid())
+  title       String
+  slug        String     @unique
+  summary     String?
+  body        String?
+  section     Section
+  subsection  Subsection
+  /// Solo para subsection = PLANOS: slug del tema dentro de la sub-pagina
+  /// de Planos (por ejemplo "tornillo" o "proyecto-1"). Ver src/lib/sections.ts.
+  topic       String?
+  published   Boolean    @default(true)
+  publishedAt DateTime   @default(now())
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  authorId String?
+  author   User?   @relation(fields: [authorId], references: [id], onDelete: SetNull)
+
+  media MediaItem[]
+
+  @@index([section, subsection, topic])
+  @@index([published, publishedAt])
+  @@map("posts")
+}
+
+/// Cada archivo, video o enlace que acompana a una publicacion.
+/// En la base de datos solo se guardan metadatos y URLs: los archivos
+/// viven en Vercel Blob.
+model MediaItem {
+  id   String    @id @default(cuid())
+  kind MediaKind
+
+  /// URL publica: blob de Vercel, enlace de YouTube o enlace externo.
+  url String
+  /// Ruta interna del blob en Vercel; se necesita para poder borrarlo.
+  blobPathname String?
+  /// Texto que se muestra al usuario (nombre del archivo o del enlace).
+  label String?
+  /// Tamano en bytes, solo para archivos subidos.
+  sizeBytes Int?
+  /// Orden de aparicion dentro de la publicacion.
+  position Int @default(0)
+
+  createdAt DateTime @default(now())
+
+  postId String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@index([postId, position])
+  @@map("media_items")
+}

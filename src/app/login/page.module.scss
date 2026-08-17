@@ -1,0 +1,126 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--paso-5);
+}
+
+.card {
+  width: min(26rem, 100%);
+}
+
+.inner {
+  padding: clamp(var(--paso-5), 6vw, var(--paso-7));
+}
+
+.eyebrow {
+  font-family: var(--fuente-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--acento);
+}
+
+.title {
+  margin-top: var(--paso-3);
+  font-size: clamp(2rem, 7vw, 2.75rem);
+  font-weight: 600;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.note {
+  margin-top: var(--paso-3);
+  font-size: 0.9375rem;
+  color: var(--grafito);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--paso-4);
+  margin-top: var(--paso-6);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--paso-2);
+}
+
+.label {
+  font-family: var(--fuente-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--grafito-claro);
+}
+
+.input {
+  padding: var(--paso-3) var(--paso-4);
+  border: 1px solid var(--trazo-fuerte);
+  border-radius: var(--radio);
+  background: var(--papel);
+  font-size: 1rem;
+  transition: border-color var(--transicion), background-color var(--transicion);
+
+  &:focus {
+    background: var(--lamina);
+    border-color: var(--acento);
+    outline: none;
+  }
+}
+
+.error {
+  padding: var(--paso-3) var(--paso-4);
+  border-left: 3px solid var(--peligro);
+  background: rgba(163, 39, 31, 0.08);
+  font-size: 0.875rem;
+  color: var(--peligro);
+}
+
+.submit {
+  padding: var(--paso-3) var(--paso-5);
+  border: 0;
+  border-radius: var(--radio);
+  background: var(--tinta);
+  color: var(--lamina);
+  font-family: var(--fuente-display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--transicion);
+
+  &:hover:not(:disabled) {
+    background: var(--acento);
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: progress;
+  }
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--paso-3);
+  justify-content: space-between;
+  padding: var(--paso-4) clamp(var(--paso-5), 6vw, var(--paso-7));
+  border-top: 1px solid var(--trazo);
+  font-family: var(--fuente-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grafito-claro);
+
+  a:hover {
+    color: var(--acento);
+  }
+}

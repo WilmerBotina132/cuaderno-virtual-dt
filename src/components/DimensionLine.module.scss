@@ -1,0 +1,53 @@
+.cota {
+  display: flex;
+  align-items: center;
+  gap: var(--paso-3);
+  margin: 0;
+}
+
+/* Lineas de referencia verticales en los extremos de la cota. */
+.tick {
+  flex: none;
+  width: 1px;
+  height: 13px;
+  background: var(--trazo-fuerte);
+}
+
+.line {
+  position: relative;
+  flex: 1;
+  height: 1px;
+  background: var(--trazo-fuerte);
+}
+
+/* Puntas de flecha, dibujadas con bordes. */
+.lineLeft::before,
+.lineRight::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 3.5px solid transparent;
+  border-bottom: 3.5px solid transparent;
+}
+
+.lineLeft::before {
+  left: 0;
+  border-right: 7px solid var(--trazo-fuerte);
+}
+
+.lineRight::after {
+  right: 0;
+  border-left: 7px solid var(--trazo-fuerte);
+}
+
+.label {
+  flex: none;
+  font-family: var(--fuente-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--grafito);
+  white-space: nowrap;
+}

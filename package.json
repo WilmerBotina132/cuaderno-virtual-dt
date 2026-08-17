@@ -1,27 +1,40 @@
 {
-  "name": "personal-blog",
+  "name": "cuaderno-virtual-lcd-dt",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:deploy": "prisma migrate deploy",
+    "db:studio": "prisma studio",
+    "db:seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@prisma/client": "^6.19.3",
+    "@vercel/blob": "^2.8.0",
+    "bcryptjs": "^3.0.3",
+    "framer-motion": "^13.1.0",
     "next": "16.1.6",
+    "next-auth": "5.0.0-beta.32",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "sass": "^1.97.3"
+    "sass": "^1.97.3",
+    "server-only": "^0.0.1",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
-    "tailwindcss": "^4",
+    "prisma": "^6.19.3",
+    "tsx": "^4.23.12",
     "typescript": "^5"
   }
 }

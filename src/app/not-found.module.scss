@@ -1,0 +1,56 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--paso-5);
+}
+
+.card {
+  width: min(34rem, 100%);
+}
+
+.inner {
+  padding: clamp(var(--paso-6), 6vw, var(--paso-7));
+}
+
+.code {
+  font-family: var(--fuente-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--acento);
+}
+
+.title {
+  margin-top: var(--paso-3);
+  font-size: clamp(2rem, 7vw, 3rem);
+  font-weight: 600;
+  line-height: 0.96;
+  text-transform: uppercase;
+}
+
+.text {
+  max-width: 44ch;
+  margin-top: var(--paso-4);
+  color: var(--grafito);
+}
+
+.link {
+  display: inline-block;
+  margin-top: var(--paso-5);
+  padding: var(--paso-3) var(--paso-5);
+  background: var(--tinta);
+  color: var(--lamina);
+  border-radius: var(--radio);
+  font-family: var(--fuente-display);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color var(--transicion);
+
+  &:hover {
+    background: var(--acento);
+  }
+}

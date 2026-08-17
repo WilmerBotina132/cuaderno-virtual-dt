@@ -1,0 +1,204 @@
+/* El panel usa los mismos colores del sitio pero sin adornos: aqui lo que
+   importa es ver rapido la lista y editar sin estorbos. */
+
+.shell {
+  min-height: 100vh;
+  background: var(--papel);
+}
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.barInner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--paso-4) var(--paso-5);
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: var(--paso-3) var(--margen-lateral);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brandName {
+  font-family: var(--fuente-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.brandSub {
+  font-family: var(--fuente-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--paso-4);
+  margin-right: auto;
+  font-size: 0.875rem;
+
+  a {
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    opacity: 0.8;
+    transition: opacity var(--transicion), border-color var(--transicion);
+
+    &:hover {
+      opacity: 1;
+      border-bottom-color: var(--acento);
+    }
+  }
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: var(--paso-3);
+  font-family: var(--fuente-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.logout {
+  padding: var(--paso-1) var(--paso-3);
+  border: 1px solid rgba(238, 240, 234, 0.35);
+  border-radius: var(--radio);
+  background: none;
+  color: inherit;
+  font-family: var(--fuente-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--transicion), border-color var(--transicion);
+
+  &:hover {
+    background: var(--acento);
+    border-color: var(--acento);
+  }
+}
+
+.main {
+  max-width: 1100px;
+  margin-inline: auto;
+  padding: var(--paso-6) var(--margen-lateral) var(--paso-8);
+}
+
+/* --- Piezas reutilizadas por las paginas del panel ----------------------- */
+
+.pageHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--paso-4);
+  padding-bottom: var(--paso-3);
+  margin-bottom: var(--paso-5);
+  border-bottom: 2px solid var(--tinta);
+}
+
+.pageTitle {
+  font-size: 1.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.pageMeta {
+  font-family: var(--fuente-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grafito);
+}
+
+.primary {
+  display: inline-block;
+  padding: var(--paso-2) var(--paso-4);
+  border: 0;
+  border-radius: var(--radio);
+  background: var(--tinta);
+  color: var(--papel);
+  font-family: var(--fuente-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--transicion);
+
+  &:hover:not(:disabled) {
+    background: var(--acento);
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: progress;
+  }
+}
+
+.secondary {
+  display: inline-block;
+  padding: var(--paso-2) var(--paso-4);
+  border: 1px solid var(--trazo-fuerte);
+  border-radius: var(--radio);
+  background: var(--lamina);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: border-color var(--transicion), color var(--transicion);
+
+  &:hover {
+    border-color: var(--tinta);
+  }
+}
+
+.danger {
+  padding: var(--paso-2) var(--paso-4);
+  border: 1px solid rgba(163, 39, 31, 0.4);
+  border-radius: var(--radio);
+  background: var(--lamina);
+  color: var(--peligro);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color var(--transicion);
+
+  &:hover {
+    background: rgba(163, 39, 31, 0.08);
+  }
+}
+
+.notice {
+  padding: var(--paso-4);
+  margin-bottom: var(--paso-5);
+  border-left: 3px solid var(--acento);
+  background: var(--lamina);
+  font-size: 0.9375rem;
+  color: var(--grafito);
+}
+
+.alert {
+  padding: var(--paso-4);
+  margin-bottom: var(--paso-5);
+  border-left: 3px solid var(--peligro);
+  background: rgba(163, 39, 31, 0.07);
+  font-size: 0.9375rem;
+  color: var(--peligro);
+}

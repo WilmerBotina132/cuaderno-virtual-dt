@@ -1,10 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
-  basePath: "/cuaderno-virtual-dt",
   images: {
-    unoptimized: true,
+    remotePatterns: [
+      // Imagenes servidas desde Vercel Blob.
+      { protocol: "https", hostname: "*.public.blob.vercel-storage.com" },
+      // Miniaturas de YouTube.
+      { protocol: "https", hostname: "i.ytimg.com" },
+    ],
   },
 };
 

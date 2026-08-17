@@ -1,0 +1,77 @@
+.index {
+  overflow: hidden;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    "num name arrow"
+    "num count arrow";
+  align-items: center;
+  gap: 0 var(--paso-4);
+  padding: var(--paso-4) clamp(var(--paso-4), 3vw, var(--paso-6));
+  border-bottom: 1px solid var(--trazo);
+  transition: background-color var(--transicion);
+
+  @media (min-width: 46rem) {
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-areas: "num name count arrow";
+    gap: var(--paso-5);
+  }
+
+  &:hover {
+    background: var(--acento-suave);
+
+    .number {
+      color: var(--acento);
+    }
+
+    .arrow {
+      color: var(--acento);
+      transform: translateX(3px);
+    }
+  }
+}
+
+.rows > li:last-child .row {
+  border-bottom: 0;
+}
+
+/* Numero de lamina, como va rotulado en el cajetin. */
+.number {
+  grid-area: num;
+  align-self: center;
+  min-width: 2.25rem;
+  font-family: var(--fuente-mono);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--grafito-claro);
+  transition: color var(--transicion);
+}
+
+.name {
+  grid-area: name;
+  font-family: var(--fuente-display);
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+
+.count {
+  grid-area: count;
+  font-family: var(--fuente-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grafito-claro);
+}
+
+.arrow {
+  grid-area: arrow;
+  align-self: center;
+  color: var(--trazo-fuerte);
+  transition: transform var(--transicion), color var(--transicion);
+}

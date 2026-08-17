@@ -1,0 +1,54 @@
+.sheet {
+  position: relative;
+  background: var(--lamina);
+  border: 1px solid var(--trazo);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-lamina);
+  transition:
+    border-color var(--transicion),
+    box-shadow var(--transicion);
+
+  /* Marcas de registro: las escuadras que en una lamina real sirven para
+     alinear la hoja. Aqui aparecen al apuntar una lamina en la que se puede
+     hacer clic, y son el gesto que identifica al sitio. */
+  &::after {
+    --marca: linear-gradient(var(--acento), var(--acento));
+
+    content: "";
+    position: absolute;
+    inset: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--transicion);
+    background:
+      var(--marca) 0 0 / 12px 1px no-repeat,
+      var(--marca) 0 0 / 1px 12px no-repeat,
+      var(--marca) 100% 0 / 12px 1px no-repeat,
+      var(--marca) 100% 0 / 1px 12px no-repeat,
+      var(--marca) 0 100% / 12px 1px no-repeat,
+      var(--marca) 0 100% / 1px 12px no-repeat,
+      var(--marca) 100% 100% / 12px 1px no-repeat,
+      var(--marca) 100% 100% / 1px 12px no-repeat;
+  }
+}
+
+/* Segundo marco interior: el margen que se deja al bordear una plancha. */
+.framed::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--trazo);
+  pointer-events: none;
+}
+
+.interactive {
+  &:hover,
+  &:focus-within {
+    border-color: var(--trazo-fuerte);
+    box-shadow: var(--sombra-alta);
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}
