@@ -6,7 +6,6 @@ export const SITE = {
   city: "Pasto, Nariño",
   course: "9-2",
   author: "Wilmer Andrey Botina Ortiz",
-  authorShort: "W. A. Botina O.",
   description:
     "Láminas, videos de apoyo y consultas de Dibujo Técnico y Diseño Aplicado del curso 9-2 del I.E.M Técnico Industrial.",
 } as const;

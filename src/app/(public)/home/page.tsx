@@ -55,7 +55,7 @@ export default async function HomePage() {
             { label: "Institución", value: SITE.institution },
             { label: "Área", value: SITE.tagline },
             { label: "Curso", value: SITE.course },
-            { label: "Elaboró", value: SITE.authorShort },
+            { label: "Elaboró", value: SITE.author },
           ]}
         />
       </Sheet>
